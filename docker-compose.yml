@@ -1,22 +1,22 @@
 version: "3"
 
 services:
-  # gd_frontend:
-  #   container_name: gd_frontend
-  #   restart: unless-stopped
-  #   build:
-  #     context: ./frontend
-  #   command: ["yarn", "start"]
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - ./frontend/:/frontend/
-  #     - ./frontend/node_modules/:/frontend/node_modules
-  #   environment:
-  #     - CI=true
-  #     - CHOKIDAR_USEPOLLING=true
-  #     - REACT_APP_BACKEND_URL=http://localhost:8000
-  #   tty: true
+  gd_frontend:
+    container_name: gd_frontend
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/:/frontend
+      - /frontend/node_modules
+    environment:
+      - CI=true
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_BACKEND_URL=http://localhost:8000
+    tty: true
 
   gd_backend:
     build:

@@ -5,18 +5,13 @@ services:
     build:
       context: ./frontend
       dockerfile: dockerfile.prod
-    # command: ["yarn", "start"]
     container_name: frontend
     # ports:
     #   - 3000:3000
     volumes:
       - ./frontend:/frontend
-      - build_folder:/frontend/build
+      - build_folder:/frontend/dist
       - ./frontend/node_modules/:/frontend/node_modules
-    # environment:
-    # - CI=true
-    # - CHOKIDAR_USEPOLLING=true    # HMR을 위해 필요한 설정
-    # - REACT_APP_BACKEND_URL=http://localhost:8000
     stdin_open: true # react-script 3.4.1 부터 필요
     tty: true
     env_file:
